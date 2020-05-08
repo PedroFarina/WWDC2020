@@ -42,8 +42,6 @@ class GameScene: SKScene {
     }
 }
 
-print(DrawnTile.group)
-
 // Load the SKScene from 'GameScene.sks'
 let sceneView = SKView(frame: CGRect(x:0 , y:0, width: 640, height: 480))
 if let scene = GameScene(fileNamed: "GameScene.sks") {
@@ -52,5 +50,7 @@ if let scene = GameScene(fileNamed: "GameScene.sks") {
     
     // Present the scene
     sceneView.presentScene(scene)
+    let map = SKTileMapNode.getMyMap()
+    scene.addChild(map)
 }
 PlaygroundSupport.PlaygroundPage.current.liveView = sceneView
