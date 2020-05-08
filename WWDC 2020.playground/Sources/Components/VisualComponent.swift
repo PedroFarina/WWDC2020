@@ -18,20 +18,10 @@ public class VisualComponent: GKComponent {
         super.init()
     }
 
-    public init(atlas: SKTextureAtlas) {
-        var animatedFrames: [SKTexture] = []
-
-        for name in atlas.textureNames.sorted() {
-            let texture = atlas.textureNamed(name)
-            texture.filteringMode = .nearest
-            animatedFrames.append(texture)
-        }
-
+    public init(animatedFrames: [SKTexture]) {
         let spriteNode = SKSpriteNode(texture: animatedFrames[0])
-        atlas.preload {
-            spriteNode.run(SKAction.repeatForever(
-                SKAction.animate(with: animatedFrames, timePerFrame: 0.15)))
-        }
+        spriteNode.run(SKAction.repeatForever(
+        SKAction.animate(with: animatedFrames, timePerFrame: 0.15)))
         self.node = spriteNode
         super.init()
     }
