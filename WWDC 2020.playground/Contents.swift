@@ -4,12 +4,22 @@ import PlaygroundSupport
 import SpriteKit
 
 class GameScene: SKScene {
+    override func didMove(to view: SKView) {
+        setup()
+    }
+
     @objc static override var supportsSecureCoding: Bool {
         // SKNode conforms to NSSecureCoding, so any subclass going
         // through the decoding process must support secure coding
         get {
             return true
         }
+    }
+
+    private func setup() {
+        let texture = SKTexture(imageNamed: "Towers/Placeholder.png")
+        let component = VisualComponent(texture: texture)
+        addChild(component.node)
     }
     
     func touchDown(atPoint pos : CGPoint) {
