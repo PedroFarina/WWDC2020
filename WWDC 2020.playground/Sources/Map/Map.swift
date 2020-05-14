@@ -7,20 +7,30 @@ public extension SKTileMapNode {
                                      columns: 15,
                                      rows: 15,
                                      tileSize: CGSize(width: 128, height: 64))
-        map.enableAutomapping = true
-        for coordinate in coordinatesForWalkableTiles()  {
-            map.setTileGroup(DrawnTile.group, forColumn: coordinate.0, row: coordinate.1)
-        }
-        map.enableAutomapping = false
-        map.setTileGroup(DrawnTile.group, forColumn: 4, row: 5)
-        map.setTileGroup(DrawnTile.group, forColumn: 5, row: 5)
-        map.setTileGroup(DrawnTile.group, andTileDefinition: DrawnTile.downRightInteriorDefinition, forColumn: 5, row: 6)
-
-        map.setTileGroup(DrawnTile.group, andTileDefinition: DrawnTile.upLeftEdgeDefinition, forColumn: 3, row: 6)
-        map.setTileGroup(DrawnTile.group, andTileDefinition: DrawnTile.upEdgeDefinition, forColumn: 4, row: 6)
-        map.setTileGroup(DrawnTile.group, andTileDefinition: DrawnTile.leftEdgeDefinition, forColumn: 3, row: 5)
+        map.drawMyMapWith()
 
         return map
+    }
+
+    func drawMyMapWith(_ tileGroup: SKTileGroup = DrawnTile.group,
+                       downRightInteriorDefinition: SKTileDefinition = DrawnTile.downRightInteriorDefinition,
+                       upLeftEdgeDefinition: SKTileDefinition = DrawnTile.upLeftEdgeDefinition,
+                       upEdgeDefinition: SKTileDefinition = DrawnTile.upEdgeDefinition,
+                       leftEdgeDefinition: SKTileDefinition = DrawnTile.leftEdgeDefinition) {
+        enableAutomapping = true
+        for coordinate in SKTileMapNode.coordinatesForWalkableTiles()  {
+            setTileGroup(tileGroup, forColumn: coordinate.0, row: coordinate.1)
+        }
+
+        enableAutomapping = false
+        setTileGroup(tileGroup, forColumn: 4, row: 5)
+        setTileGroup(tileGroup, forColumn: 5, row: 5)
+        setTileGroup(tileGroup, andTileDefinition: downRightInteriorDefinition, forColumn: 5, row: 6)
+
+        setTileGroup(tileGroup, andTileDefinition: upLeftEdgeDefinition, forColumn: 3, row: 6)
+        setTileGroup(tileGroup, andTileDefinition: upEdgeDefinition, forColumn: 4, row: 6)
+        setTileGroup(tileGroup, andTileDefinition: leftEdgeDefinition, forColumn: 3, row: 5)
+
     }
 
     static func coordinatesForWalkableTiles() -> [(Int, Int)] {

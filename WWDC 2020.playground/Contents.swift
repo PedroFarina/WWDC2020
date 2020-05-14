@@ -17,9 +17,10 @@ class GameScene: SKScene {
     }
 
     private func setup() {
-        let bugs: [SKTexture] = [SKTexture(imageNamed: "Bug/Bug01.png"), SKTexture(imageNamed: "Bug/Bug02.png"), SKTexture(imageNamed: "Bug/Bug03.png"), SKTexture(imageNamed: "Bug/Bug04.png")]
-        let component = VisualComponent(animatedFrames: bugs)
-        addChild(component.node)
+        self.backgroundColor = .white
+
+        let map: SKTileMapNode = SKTileMapNode.getMyMap()
+        addChild(map)
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -64,4 +65,5 @@ if let scene = GameScene(fileNamed: "GameScene.sks") {
     map.zPosition = -1
     scene.addChild(map)
 }
+
 PlaygroundSupport.PlaygroundPage.current.liveView = sceneView
