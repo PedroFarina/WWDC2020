@@ -16,14 +16,16 @@ class GameScene: SKScene {
         }
     }
 
+    let map = SKTileMapNode.getMyMap()
     private func setup() {
         self.backgroundColor = .white
 
-        let map: SKTileMapNode = SKTileMapNode.getMyMap()
+        map.zPosition = -1
         addChild(map)
     }
     
     func touchDown(atPoint pos : CGPoint) {
+        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -61,9 +63,6 @@ if let scene = GameScene(fileNamed: "GameScene.sks") {
     
     // Present the scene
     sceneView.presentScene(scene)
-    let map = SKTileMapNode.getMyMap()
-    map.zPosition = -1
-    scene.addChild(map)
 }
 
 PlaygroundSupport.PlaygroundPage.current.liveView = sceneView

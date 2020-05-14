@@ -1,6 +1,6 @@
 import SpriteKit
 
-public class DrawnTile {
+public class NormalDrawnTile {
     //MARK: C
     private static let centerEdgeDefinition = SKTileDefinition(texture: SKTexture(imageNamed: "Tiles/Center.png"))
     private static let centerRule = SKTileGroupRule(adjacency: .adjacencyAll,
@@ -62,12 +62,5 @@ public class DrawnTile {
         let group = SKTileGroup(rules: [centerRule, upEdgeRule, downEdgeRule, leftEdgeRule, rightEdgeRule, upLeftEdgeRule, upRightEdgeRule, downLeftEdgeRule, downRightEdgeRule, upLeftInteriorRule, upRightInteriorRule, downLeftInteriorRule, downRightInteriorEdgeRule])
         group.name = "NormalDrawnGroup"
         return group
-    }()
-
-    public static let tileSet: SKTileSet = {
-        let set = SKTileSet(tileGroups: [group])
-        set.name = "NormalDrawnTileSet"
-        set.type = .isometric
-        return set
     }()
 }
