@@ -22,4 +22,18 @@ extension GKEntity {
         }
         healthComponent.takeDamageFrom(damageComponent)
     }
+
+    func buy(_ value: Float) -> Bool {
+        guard let moneyComponent = self.component(ofType: MoneyComponent.self) else {
+            return false
+        }
+        return moneyComponent.spend(value)
+    }
+
+    func earn(_ value: Float) {
+        guard let moneyComponent = self.component(ofType: MoneyComponent.self) else {
+            return
+        }
+        moneyComponent.earn(value)
+    }
 }
