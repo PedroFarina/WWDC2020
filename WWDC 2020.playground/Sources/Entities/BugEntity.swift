@@ -17,7 +17,12 @@ public class BugEntity: GKEntity {
             fatalError("Could not make visual node")
         }
         visualNode.setScale(0.1)
-        addComponent(HealthComponent(health: 50))
+        let healthComponent = HealthComponent(health: 50) { (health) in
+            if health <= 0, let value = self.moneyValue {
+                //Add money to player
+            }
+        }
+        addComponent(healthComponent)
         addComponent(MovementComponent(path: path))
         addComponent(MoneyComponent(initialValue: 10))
     }

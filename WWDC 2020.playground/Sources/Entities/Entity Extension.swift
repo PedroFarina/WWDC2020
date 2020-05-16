@@ -26,6 +26,13 @@ extension GKEntity {
         return aimingComponent.target
     }
 
+    var moneyValue: Float? {
+        guard let moneyComponent = self.component(ofType: MoneyComponent.self) else {
+            return nil
+        }
+        return moneyComponent.currentValue
+    }
+
     func dealDamageTo(_ target: GKEntity) {
         guard let damageComponent = self.component(ofType: DamageComponent.self),
             let healthComponent = target.component(ofType: HealthComponent.self) else {

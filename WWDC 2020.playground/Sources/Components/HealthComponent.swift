@@ -23,6 +23,9 @@ public class HealthComponent: GKComponent {
 
     public func takeDamageFrom(_ component: DamageComponent) {
         health -= component.damage
+        if health <= 0, let entity = entity{
+            entity.removeFromManager()
+        }
         healthWatcher?(health)
     }
 }
