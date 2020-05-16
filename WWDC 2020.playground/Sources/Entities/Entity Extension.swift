@@ -1,6 +1,17 @@
 import GameplayKit
 
 extension GKEntity {
+    func addToManager() {
+        EntityManager.shared().addEntityAt(self, CGPoint(x: 0, y: 0))
+    }
+    func addToSceneAt(_ pos:CGPoint) {
+        EntityManager.shared().addEntityAt(self, pos)
+    }
+
+    func removeFromManager() {
+        EntityManager.shared().removeEntity(self)
+    }
+
     var visualNode: SKNode? {
         guard let spriteComponent = self.component(ofType: VisualComponent.self) else {
             return nil
