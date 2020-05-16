@@ -23,10 +23,11 @@ public class EntityManager {
     private var entities: Set<GKEntity> = []
     public func addEntityAt(_ entity: GKEntity, _ pos: CGPoint) {
         if let target = entity as? Targetable {
-            if var targetEntities = targetables[target.identifier] {
+            let id = type(of: target).identifier
+            if var targetEntities = targetables[id] {
                 targetEntities.insert(target)
             } else {
-                targetables[target.identifier] = [target]
+                targetables[id] = [target]
             }
         }
         if let visualNode = entity.visualNode {
@@ -38,7 +39,7 @@ public class EntityManager {
 
     public func removeEntity(_ entity: GKEntity) {
         if let target = entity as? Targetable {
-            if var targetEntities = targetables[target.identifier] {
+            if var targetEntities = targetables[type(of: target).identifier] {
                 targetEntities.remove(target)
             }
         }
