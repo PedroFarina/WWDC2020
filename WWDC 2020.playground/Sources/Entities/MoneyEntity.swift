@@ -1,7 +1,6 @@
 import GameplayKit
 
 public class MoneyEntity: GKEntity {
-    var damaged = false
     public override init() {
         super.init()
         addComponent(VisualComponent(text: "100"))
