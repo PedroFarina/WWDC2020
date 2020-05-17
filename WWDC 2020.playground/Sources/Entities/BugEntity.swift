@@ -22,13 +22,18 @@ public class BugEntity: GKEntity, Targetable {
         visualNode.setScale(0.5)
         let healthComponent = HealthComponent(health: 50) { (health) in
             if health <= 0, let value = self.moneyValue {
-                //Add money to player
+                EntityManager.shared().scene.money.earn(value)
             }
         }
         addComponent(healthComponent)
         addComponent(MovementComponent(path: path))
         addComponent(MoneyComponent(initialValue: 10))
         addComponent(DamageComponent(damage: 1))
+
+        let center: () -> CGPoint = {
+            return visualNode.position
+        }
+        addComponent(AimingComponent(radius: 180, targets: [BaseEntity.identifier], center: center))
     }
 
     public required convenience init?(coder: NSCoder) {

@@ -1,6 +1,8 @@
 import GameplayKit
 
-public class BaseEntity: GKEntity {
+public class BaseEntity: GKEntity, Targetable {
+    public static let identifier = "Base"
+    
     var damaged = false
     public override init() {
         super.init()
