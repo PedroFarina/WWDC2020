@@ -3,13 +3,13 @@ import GameplayKit
 public class MoneyEntity: GKEntity {
     public override init() {
         super.init()
-        addComponent(VisualComponent(text: "100"))
+        addComponent(VisualComponent(text: "$100"))
         guard let visualNode = visualNode as? SKLabelNode else {
             fatalError("Could not make visual node")
         }
 
         let moneyComponent = MoneyComponent(initialValue: 100) { (money) in
-            visualNode.text = String(format: "%.0f", money)
+            visualNode.text = String(format: "$%.0f", money)
         }
         addComponent(moneyComponent)
     }
