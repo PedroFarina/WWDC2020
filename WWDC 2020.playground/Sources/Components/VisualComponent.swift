@@ -10,8 +10,11 @@ public class VisualComponent: GKComponent {
 
     public init(text: String) {
         let lbl = SKLabelNode(text: text)
+        if let fontURL = Bundle.main.url(forResource: "Fonts/Schoolbell", withExtension: "ttf") as CFURL? {
+            CTFontManagerRegisterFontsForURL(fontURL, CTFontManagerScope.process, nil)
+        }
         lbl.fontName = "Schoolbell"
-        lbl.fontSize = 18
+        lbl.fontSize = 40
         lbl.fontColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         node = lbl
 
