@@ -6,7 +6,7 @@ public class AimingComponent: GKComponent {
     let center: () -> CGPoint
     private let targets: [String]
 
-    init(radius: CGFloat, targets: [String], center: @escaping () -> CGPoint) {
+    public init(radius: CGFloat, targets: [String], center: @escaping () -> CGPoint) {
         self.radius = radius
         self.center = center
         self.targets = targets

@@ -10,7 +10,7 @@ public class HealthComponent: GKComponent {
         super.init()
     }
 
-    init(health: Float, healthWatcher: @escaping (Float) -> Void) {
+    public init(health: Float, healthWatcher: @escaping (Float) -> Void) {
         self.health = health
         self.healthWatcher = healthWatcher
         super.init()

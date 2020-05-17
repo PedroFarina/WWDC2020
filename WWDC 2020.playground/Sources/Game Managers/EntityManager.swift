@@ -20,7 +20,7 @@ public class EntityManager {
         }
     }()
 
-    private var entities: Set<GKEntity> = []
+    public private(set) var entities: Set<GKEntity> = []
     public func addEntityAt(_ entity: GKEntity, _ pos: CGPoint) {
         if let target = entity as? Targetable {
             let id = type(of: target).identifier

@@ -10,7 +10,7 @@ public class BugEntity: GKEntity {
         return texts
     }()
 
-    init(path: [CGPoint]) {
+    public init(path: [CGPoint]) {
         super.init()
         addComponent(VisualComponent(animatedFrames: BugEntity.textures))
         guard let visualNode = visualNode else {

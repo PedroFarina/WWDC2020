@@ -5,7 +5,7 @@ public class ShootingComponent: GKComponent {
     let rateOfFire: TimeInterval = 0.6
     var timeTillNextAttack:TimeInterval = 0
 
-    init(origin: @escaping () -> CGPoint) {
+    public init(origin: @escaping () -> CGPoint) {
         self.origin = origin
         super.init()
     }

@@ -1,6 +1,6 @@
 import GameplayKit
 
-extension GKEntity {
+public extension GKEntity {
     func addToManager() {
         EntityManager.shared().addEntityAt(self, CGPoint(x: 0, y: 0))
     }

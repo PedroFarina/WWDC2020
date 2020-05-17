@@ -7,7 +7,7 @@ public class MovementComponent: GKComponent {
     private var canMove: Bool = true
     public private(set) var path: [CGPoint]
 
-    init(path: [CGPoint]) {
+    public init(path: [CGPoint]) {
         self.path = path
         super.init()
     }

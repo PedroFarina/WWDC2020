@@ -5,7 +5,7 @@ public class DamageComponent: GKComponent {
 
     public let damage: Float
 
-    init(damage: Float) {
+    public init(damage: Float) {
         self.damage = damage
         super.init()
     }

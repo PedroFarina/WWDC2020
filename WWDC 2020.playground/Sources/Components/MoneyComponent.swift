@@ -10,12 +10,12 @@ public class MoneyComponent: GKComponent {
 
     private var currencyWatcher: ((Float) -> Void)?
 
-    init(initialValue: Float) {
+    public init(initialValue: Float) {
         self.currentValue = initialValue
         super.init()
     }
 
-    init(initialValue: Float, currencyWatcher: @escaping (Float) -> Void) {
+    public init(initialValue: Float, currencyWatcher: @escaping (Float) -> Void) {
         self.currentValue = initialValue
         self.currencyWatcher = currencyWatcher
         super.init()
@@ -26,14 +26,14 @@ public class MoneyComponent: GKComponent {
         self.init(initialValue: inititalValue)
     }
 
-    func spend(_ value: Float) -> Bool {
+    public func spend(_ value: Float) -> Bool {
         if currentValue >= value {
             currentValue -= value
             return true
         }
         return false
     }
-    func earn(_ value: Float) {
+    public func earn(_ value: Float) {
         currentValue += value
     }
 }
