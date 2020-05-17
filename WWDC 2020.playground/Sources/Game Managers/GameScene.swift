@@ -12,6 +12,7 @@ public class GameScene: SKScene {
     }
     private static let placeholderTexture = SKTexture(imageNamed: "Towers/Placeholder.png")
 
+    public var spawner: SpawnerEntity?
     public let base = BaseEntity()
     public let money = MoneyEntity()
     public let map = SKTileMapNode.getMyMap()
@@ -39,15 +40,25 @@ public class GameScene: SKScene {
     private func makePlaceholder() -> SKSpriteNode {
         let placeholder = SKSpriteNode(texture: GameScene.placeholderTexture)
         placeholder.name = "placeholder"
-        placeholder.setScale(0.3)
+        placeholder.setScale(0.25)
         return placeholder
     }
 
+    var gameBegan: Bool = false
     func touchDown(atPoint pos : CGPoint) {
-        if nodes(at: pos).first(where: { $0.name == "placeholder" }) != nil {
-
+        if let placeholder = nodes(at: pos).first(where: { $0.name == "placeholder" }),
+        money.buy(100) {
+            if !gameBegan {
+                gameBegan = true
+                spawner?.addToManager()
+            }
+            let tower = TowerEntity()
+            tower.addToSceneAt(placeholder.position)
+            towers.append(tower)
+            placeholder.removeFromParent()
         }
     }
+    var towers: [TowerEntity] = []
 
     func touchMoved(toPoint pos : CGPoint) {
     }

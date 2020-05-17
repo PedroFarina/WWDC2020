@@ -28,6 +28,8 @@ public class EntityManager {
         return path
     }()
 
+    public var noMoreBugs: Bool = false
+
     public private(set) var entities: Set<GKEntity> = []
     public func addEntityAt(_ entity: GKEntity, _ pos: CGPoint) {
         if let target = entity as? Targetable {
@@ -50,6 +52,11 @@ public class EntityManager {
         if let target = entity as? Targetable {
             if var targetEntities = targetables[type(of: target).identifier] {
                 targetEntities.remove(entity)
+                if type(of: target).identifier == BugEntity.identifier &&
+                    noMoreBugs && targetEntities.isEmpty {
+                    EndGameEntity(text: "Yey! You defended the code.").addToManager()
+                    scene.isPaused = true
+                }
                 targetables[type(of: target).identifier] = targetEntities
             }
         }

@@ -17,6 +17,9 @@ public class BaseEntity: GKEntity, Targetable {
             if !self.damaged && health <= 5 {
                 self.damaged = true
                 EntityManager.shared().scene.map.redrawWithBadMap()
+                for tower in EntityManager.shared().scene.towers {
+                    tower.redrawWithBadTexture()
+                }
                 visualNode.text = "Cdoe Ograniaztoni"
             } else if health <= 0 {
                 EndGameEntity(text: "Your code broke").addToManager()
