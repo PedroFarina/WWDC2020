@@ -1,7 +1,9 @@
 import GameKit
 import SpriteKit
 
-public class BugEntity: GKEntity {
+public class BugEntity: GKEntity, Targetable {
+    public static let identifier: String = "Bug"
+
     private static let textures: [SKTexture] = {
         var texts: [SKTexture] = []
         for i in 1...4 {
