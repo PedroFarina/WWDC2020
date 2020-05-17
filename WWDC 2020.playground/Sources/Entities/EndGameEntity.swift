@@ -8,6 +8,7 @@ public class EndGameEntity: GKEntity {
         guard let visualNode = visualNode as? SKLabelNode else {
             return
         }
+        visualNode.zPosition = 5
         visualNode.fontSize = 80
         visualNode.fontColor = .red
     }

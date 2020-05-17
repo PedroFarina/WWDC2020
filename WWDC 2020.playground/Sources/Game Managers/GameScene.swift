@@ -12,6 +12,7 @@ public class GameScene: SKScene {
     }
     private static let placeholderTexture = SKTexture(imageNamed: "Towers/Placeholder.png")
 
+    public let base = BaseEntity()
     public let map = SKTileMapNode.getMyMap()
     private func setup() {
         scaleMode = .aspectFill
@@ -22,13 +23,15 @@ public class GameScene: SKScene {
         addChild(map)
 
         var placeholder = makePlaceholder()
-        placeholder.position = CGPoint(x: 180, y: 340)
+        placeholder.position = CGPoint(x: 150, y: 320)
         placeholder.zPosition = 1
         addChild(placeholder)
         placeholder = makePlaceholder()
         placeholder.position = CGPoint(x: -240, y: -150)
         placeholder.zPosition = 3
         addChild(placeholder)
+
+        base.addToSceneAt(CGPoint(x: 425, y: 340))
     }
 
     private func makePlaceholder() -> SKSpriteNode {

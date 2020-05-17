@@ -8,6 +8,8 @@ public class BaseEntity: GKEntity {
         guard let visualNode = visualNode as? SKLabelNode else {
             fatalError("Could not make visual node")
         }
+        visualNode.zPosition = 5
+        visualNode.zRotation = 1.84 * .pi
 
         let healthComponent = HealthComponent(health: 10) { (health) in
             if !self.damaged && health <= 5 {
