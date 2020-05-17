@@ -47,7 +47,12 @@ public class GameScene: SKScene {
         for t in touches { touchUp(atPoint: t.location(in: self)) }
     }
 
-
+    var previousTime: TimeInterval = 0
     public override func update(_ currentTime: TimeInterval) {
+        let deltaTime = currentTime - previousTime
+        for entity in EntityManager.shared().entities {
+            entity.update(deltaTime: deltaTime)
+        }
+        previousTime = currentTime
     }
 }
