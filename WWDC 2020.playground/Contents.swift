@@ -1,4 +1,4 @@
-//: A code organization Tower Defense Playground
+//: This is a code organization themed  Tower Defense game. When you're ready to begin your experience, just hit play and tap one of the spots to build your tower and unleash the bugs.
 
 //#-hidden-code
 import PlaygroundSupport
