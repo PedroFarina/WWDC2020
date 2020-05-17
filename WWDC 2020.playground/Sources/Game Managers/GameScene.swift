@@ -10,6 +10,7 @@ public class GameScene: SKScene {
             return true
         }
     }
+    private static let placeholderTexture = SKTexture(imageNamed: "Towers/Placeholder.png")
 
     public let map = SKTileMapNode.getMyMap()
     private func setup() {
@@ -19,10 +20,28 @@ public class GameScene: SKScene {
 
         map.zPosition = -1
         addChild(map)
+
+        var placeholder = makePlaceholder()
+        placeholder.position = CGPoint(x: 180, y: 340)
+        placeholder.zPosition = 1
+        addChild(placeholder)
+        placeholder = makePlaceholder()
+        placeholder.position = CGPoint(x: -240, y: -150)
+        placeholder.zPosition = 3
+        addChild(placeholder)
+    }
+
+    private func makePlaceholder() -> SKSpriteNode {
+        let placeholder = SKSpriteNode(texture: GameScene.placeholderTexture)
+        placeholder.name = "placeholder"
+        placeholder.setScale(0.3)
+        return placeholder
     }
 
     func touchDown(atPoint pos : CGPoint) {
+        if nodes(at: pos).first(where: { $0.name == "placeholder" }) != nil {
 
+        }
     }
 
     func touchMoved(toPoint pos : CGPoint) {
