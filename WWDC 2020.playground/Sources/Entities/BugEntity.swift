@@ -28,6 +28,7 @@ public class BugEntity: GKEntity, Targetable {
         addComponent(healthComponent)
         addComponent(MovementComponent(path: path))
         addComponent(MoneyComponent(initialValue: 10))
+        addComponent(DamageComponent(damage: 1))
     }
 
     public required convenience init?(coder: NSCoder) {
