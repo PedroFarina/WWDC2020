@@ -43,11 +43,11 @@ public class MovementComponent: GKComponent {
                 }
                 path.removeFirst()
             } else if path.isEmpty {
+                canMove = false
                 if let target = entity?.target {
                     entity?.dealDamageTo(target)
                 }
                 entity?.removeFromManager()
-                canMove = false
             }
         }
     }
