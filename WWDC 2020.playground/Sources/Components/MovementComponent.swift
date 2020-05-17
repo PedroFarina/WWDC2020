@@ -3,12 +3,13 @@ import SpriteKit
 
 public class MovementComponent: GKComponent {
 
-    private let speed: Double = 3
+    private let speed: Double
     private var canMove: Bool = true
     public private(set) var path: [CGPoint]
 
-    public init(path: [CGPoint]) {
+    public init(path: [CGPoint], speed: Double = 3) {
         self.path = path
+        self.speed = speed
         super.init()
     }
 

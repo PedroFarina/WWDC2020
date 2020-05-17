@@ -1,7 +1,7 @@
 import GameplayKit
 
 public class AimingComponent: GKComponent {
-    public private(set) var target: GKEntity?
+    public private(set) weak var target: GKEntity?
     let radius: CGFloat
     let center: () -> CGPoint
     private let targets: [String]

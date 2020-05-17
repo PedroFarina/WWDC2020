@@ -34,6 +34,7 @@ public class EntityManager {
             let id = type(of: target).identifier
             if var targetEntities = targetables[id] {
                 targetEntities.insert(target)
+                targetables[id] = targetEntities
             } else {
                 targetables[id] = [target]
             }
@@ -48,7 +49,8 @@ public class EntityManager {
     public func removeEntity(_ entity: GKEntity) {
         if let target = entity as? Targetable {
             if var targetEntities = targetables[type(of: target).identifier] {
-                targetEntities.remove(target)
+                targetEntities.remove(entity)
+                targetables[type(of: target).identifier] = targetEntities
             }
         }
         if let visualNode = entity.visualNode {

@@ -2,7 +2,7 @@ import GameplayKit
 
 public class ShootingComponent: GKComponent {
     let origin: () -> CGPoint
-    let rateOfFire: TimeInterval = 0.6
+    let rateOfFire: TimeInterval = 1
     var timeTillNextAttack:TimeInterval = 0
 
     public init(origin: @escaping () -> CGPoint) {
@@ -21,8 +21,8 @@ public class ShootingComponent: GKComponent {
         super.update(deltaTime: seconds)
 
         timeTillNextAttack -= seconds
-        guard let entity = entity,
-            let target = entity.target,
+        guard let target = entity?.target,
+            let node = target.visualNode,
             timeTillNextAttack < 0 else {
                 return
         }
@@ -30,5 +30,8 @@ public class ShootingComponent: GKComponent {
         timeTillNextAttack = rateOfFire
 
         //Make a bullet entity and fire it
+        let bullet = BulletEntity(path: [origin(), node.position])
+        bullet.visualNode?.rotateToFaceNode(node.position, source: origin())
+        bullet.addToSceneAt(origin())
     }
 }
