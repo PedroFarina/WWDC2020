@@ -15,7 +15,7 @@ public class BaseEntity: GKEntity {
                 EntityManager.shared().scene.map.redrawWithBadMap()
                 visualNode.text = "Cdoe Ograniaztoni"
             } else if health <= 0 {
-                //End game
+                EndGameEntity(text: "Your code broke").addToManager()
                 EntityManager.shared().scene.isPaused = true
             }
         }
