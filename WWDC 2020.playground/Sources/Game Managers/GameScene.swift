@@ -11,7 +11,7 @@ public class GameScene: SKScene {
         }
     }
 
-    let map = SKTileMapNode.getMyMap()
+    public let map = SKTileMapNode.getMyMap()
     private func setup() {
         scaleMode = .aspectFill
         

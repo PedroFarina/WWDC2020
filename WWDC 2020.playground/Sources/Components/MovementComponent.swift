@@ -3,7 +3,7 @@ import SpriteKit
 
 public class MovementComponent: GKComponent {
 
-    private let speed: Double = 2
+    private let speed: Double = 3
     private var canMove: Bool = true
     public private(set) var path: [CGPoint]
 

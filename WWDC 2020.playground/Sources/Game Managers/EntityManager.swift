@@ -12,12 +12,20 @@ public class EntityManager {
         return manager
     }()
 
-    public private(set) var scene: SKScene = {
+    public private(set) var scene: GameScene = {
         if let scene = GameScene(fileNamed: "GameScene.sks") {
             return scene
         } else {
             return GameScene()
         }
+    }()
+    lazy public private(set) var walkablePath: [CGPoint] = {
+        var path: [CGPoint] = []
+        for coordinate in SKTileMapNode.coordinatesForWalkableTiles() {
+            let p = scene.map.centerOfTile(atColumn: coordinate.0, row: coordinate.1)
+            path.append(p)
+        }
+        return path
     }()
 
     public private(set) var entities: Set<GKEntity> = []
